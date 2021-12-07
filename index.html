@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <title>Wetaca Ballina</title>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/ballina.css">
+  
+</head>
+<body>
+  <div id=app>
+    <div>
+      <header>
+        <div>
+          <h1><a href="#">Wetaca Ballina</a></h1>
+          <h2>Select your user
+            <select v-model="userSelected">
+              <option v-for="user in users" >{{ user.userName }}</option>
+          </h2>
+        </select>
+        <img id="cart" src="images/cart.png">
+        <span class="badge" id='cartCount'>{{order.length}}</span>
+      </div>
+      </header>
+    </div>
+    <ul class="dishesList" v-for="category in categories">
+      <h2>{{category}}</h2>
+      <div class="row">
+        <li v-for="dish in dishes">
+          <div id="dishCard" class="card" v-if="category===dish.category.name">
+            <img class="card-img-top"
+              v-bind:src="'https://wetaca.com/images/products/'+dish.id+'/catalog/'+dish.slug+'_A.jpg'">
+            <div id="cardBody" class="card-body">
+              <h5 class="card-title">{{dish.name}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{dividePrice(dish.price)}}€</h6>
+              <a v-on:click="addMeal(dish,userSelected)" href="#" class="btn btn-primary">Add to cart</a>
+            </div>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+  <script src="main.js"></script> 
+</body>
+</html>

@@ -1,0 +1,29 @@
+.dishesList {
+    list-style-type: none;
+    white-space: nowrap;
+  }
+
+  #dishCard {
+    width: 18rem;
+    margin: 10px;
+    height: 28rem;;
+  }
+
+  .dishesList li {
+    display: inline;
+  }
+  #cardBody {white-space: normal;}
+
+  #cart {width: 2%;}
+
+
+  #cartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: -15 5px;
+    vertical-align: top;
+    margin-left: -10px;
+}
+
+
